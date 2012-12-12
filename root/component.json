@@ -2,7 +2,7 @@
   "name": "{%= name %}",
   "description": "{%= description %}",
   "version": "{%= version %}",
-  "homepage": "{%= homepage %}"
+  "homepage": "{%= homepage %}",
   "license": "{%= licenses %}",
   "copyright": "{%= author_name %}",
   "dependencies": {
