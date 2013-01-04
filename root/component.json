@@ -5,6 +5,7 @@
   "homepage": "{%= homepage %}",
   "license": "{%= licenses %}",
   "copyright": "{%= author_name %}",
+  "main": "dist/{%= name %}.js",
   "dependencies": {
   }
 }
