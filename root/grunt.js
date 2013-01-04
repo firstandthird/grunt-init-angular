@@ -11,7 +11,7 @@ module.exports = function(grunt) {
               '*/'
     },
     lint: {
-      all: [
+      main: [
         'grunt.js',
         'component.json',
         'lib/*.js',
@@ -20,19 +20,13 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: [
-          '<banner>',
-          'lib/{%= name %}.js'
-        ],
+        src: ['<banner>', 'lib/{%= name %}.js'],
         dest: 'dist/{%= name %}.js'
       }
     },
     min: {
       dist: {
-        src: [
-          '<banner>', 
-          'dist/{%= name %}.js'
-        ],
+        src: ['<banner>', 'dist/{%= name %}.js'],
         dest: 'dist/{%= name %}.min.js'
       }
     },
@@ -43,9 +37,16 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      js: {
+      main: {
         files: '<config:lint.all>',
-        tasks: 'default' 
+        tasks: 'default'
+      },
+      ci: {
+        files: [
+          '<config:lint.main>',
+          'test/index.html'
+        ],
+        task: 'default mocha'
       }
     },
     reloadr: {
@@ -62,6 +63,7 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-mocha');
   grunt.loadNpmTasks('grunt-reloadr');
-  grunt.registerTask('default', 'lint concat min mocha');
-  grunt.registerTask('dev', 'server reloadr watch');
+  grunt.registerTask('default', 'lint concat min');
+  grunt.registerTask('dev', 'server reloadr watch:main');
+  grunt.registerTask('ci', 'watch:ci');
 };
