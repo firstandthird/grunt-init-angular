@@ -38,7 +38,10 @@ module.exports = function(grunt) {
     },
     watch: {
       main: {
-        files: '<config:lint.all>',
+        files: [
+          '<config:lint.main>',
+          'example/*'
+        ],
         tasks: 'default'
       },
       ci: {
@@ -46,7 +49,7 @@ module.exports = function(grunt) {
           '<config:lint.main>',
           'test/index.html'
         ],
-        task: 'default mocha'
+        tasks: 'default mocha'
       }
     },
     reloadr: {
