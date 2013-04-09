@@ -7,5 +7,8 @@
   "copyright": "{%= author_name %}",
   "main": "dist/{%= name %}.js",
   "dependencies": {
+  },
+  "devDependencies": {
+    "assert": "*"
   }
 }

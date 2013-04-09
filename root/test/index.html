@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <title>{%= name %} Tests</title>
   <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
-  <script src="../support/assert.js"></script>
+  <script src="../components/assert/assert.js"></script>
   <script src="../node_modules/mocha/mocha.js"></script>
+  <!--<script src="../components/blanket/dist/qunit/blanket.min.js" data-cover-adapter="../components/blanket/src/adapters/mocha-blanket.js"></script>-->
   <script>mocha.setup('tdd')</script>
 </head>
 <body>
@@ -13,7 +14,7 @@
   <div id="fixture" style="display: none">
 
   </div>
-  <script src="../dist/{%= name %}.js"></script>
+  <script src="../dist/{%= name %}.js" data-cover></script>
   <script src="{%= name %}.test.js"></script>
   <script>
     if (navigator.userAgent.indexOf('PhantomJS') < 0) {
