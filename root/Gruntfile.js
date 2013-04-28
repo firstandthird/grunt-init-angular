@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    info: grunt.file.readJSON('component.json'),
+    info: grunt.file.readJSON('bower.json'),
     meta: {
       banner: '/*!\n'+
               ' * <%= info.name %> - <%= info.description %>\n'+
