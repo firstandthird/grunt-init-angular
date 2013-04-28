@@ -18,7 +18,7 @@
   <script src="{%= name %}.test.js"></script>
   <script>
     if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-      mocha.run().globals(['LiveReload']);
+      mocha.run();
     }
   </script>
 </body>
