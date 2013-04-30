@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     jshint: {
       main: [
         'grunt.js', 
-        'component.json',
+        'bower.json',
         'lib/**/*.js',
         'test/*.js'
       ]
