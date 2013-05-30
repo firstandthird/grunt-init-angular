@@ -2,6 +2,21 @@
 
 {%= description %}
 
+##Installation
+
+###Bower
+
+`bower install {%= name %}`
+
+###Manual Download
+
+- [Development]()
+- [Production]()
+
+##Usage
+
+Docs coming soon
+
 ##Development
 
 ###Requirements
@@ -22,3 +37,7 @@
 or for just running tests on file changes:
 
 `grunt ci`
+
+###Tests
+
+`grunt mocha`
