@@ -46,7 +46,7 @@ module.exports = function(grunt) {
           '<%= jshint.main %>',
           'test/index.html'
         ],
-        tasks: ['default', 'mocha']
+        tasks: ['default']
       }
     },
     mocha: {
