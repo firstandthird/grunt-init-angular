@@ -7,6 +7,7 @@
   "copyright": "{%= author_name %}",
   "main": "dist/{%= name %}.js",
   "dependencies": {
+    "angular": "1.0.7"
   },
   "devDependencies": {
     "assert": "*"
