@@ -18,12 +18,23 @@ module.exports = function(grunt) {
         'test/*.js'
       ]
     },
+    bower: {
+      main: {
+        dest: 'dist/_bower.js',
+        exclude: [
+          'assert'
+        ]
+      }
+    },
     concat: {
       options: {
         banner: '<%= meta.banner %>'
       },
       dist: {
-        src: 'lib/{%= name %}.js',
+        src: [
+          'dist/_bower.js',
+          'lib/{%= name %}.js'
+        ],
         dest: 'dist/{%= name %}.js'
       }
     },
@@ -36,17 +47,20 @@ module.exports = function(grunt) {
         dest: 'dist/{%= name %}.min.js'
       }
     },
+    clean: [
+      'dist/_bower.js'
+    ],
     watch: {
-      main: {
+      scripts: {
         files: '<%= jshint.main %>',
-        tasks: 'default' 
+        tasks: 'scripts'
       },
       ci: {
         files: [
-          '<%= jshint.main %>',
+          'GruntFile.js',
           'test/index.html'
         ],
-        tasks: ['default']
+        tasks: 'default'
       }
     },
     mocha: {
@@ -83,6 +97,13 @@ module.exports = function(grunt) {
           keepalive: true
         }
       }
+    },
+    bytesize: {
+      scripts: {
+        src: [
+          'dist/*'
+        ]
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -90,11 +111,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-bower-concat');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-bytesize');
   grunt.loadNpmTasks('grunt-mocha');
   grunt.loadNpmTasks('grunt-reloadr');
   grunt.loadNpmTasks('grunt-plato');
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'mocha']);
-  grunt.registerTask('dev', ['connect:server', 'reloadr', 'watch:main']);
-  grunt.registerTask('ci', ['connect:server', 'watch:ci']);
+  grunt.registerTask('scripts', ['jshint', 'bower', 'concat', 'uglify', 'clean', 'mocha', 'bytesize']);
+  grunt.registerTask('default', ['scripts']);
+  grunt.registerTask('dev', ['connect:server', 'reloadr', 'watch']);
   grunt.registerTask('reports', ['plato', 'connect:plato']);
 };
