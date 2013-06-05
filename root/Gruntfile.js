@@ -32,10 +32,16 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'dist/_bower.js',
           'lib/{%= name %}.js'
         ],
         dest: 'dist/{%= name %}.js'
+      },
+      full: {
+        src: [
+          'dist/_bower.js',
+          'lib/{%= name %}.js'
+        ],
+        dest: 'dist/{%= name %}.full.js'
       }
     },
     uglify: {
@@ -45,6 +51,10 @@ module.exports = function(grunt) {
       dist: {
         src: 'dist/{%= name %}.js',
         dest: 'dist/{%= name %}.min.js'
+      },
+      full: {
+        src: 'dist/{%= name %}.full.js',
+        dest: 'dist/{%= name %}.full.min.js'
       }
     },
     clean: [
