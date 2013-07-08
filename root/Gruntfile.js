@@ -18,13 +18,30 @@ module.exports = function(grunt) {
         'test/*.js'
       ]
     },
+    bower: {
+      main: {
+        dest: 'dist/_bower.js',
+        exclude: [
+          'assert'
+        ]
+      }
+    },
     concat: {
       options: {
         banner: '<%= meta.banner %>'
       },
       dist: {
-        src: 'lib/{%= name %}.js',
+        src: [
+          'lib/{%= name %}.js'
+        ],
         dest: 'dist/{%= name %}.js'
+      },
+      full: {
+        src: [
+          'dist/_bower.js',
+          'lib/{%= name %}.js'
+        ],
+        dest: 'dist/{%= name %}.full.js'
       }
     },
     uglify: {
@@ -34,26 +51,50 @@ module.exports = function(grunt) {
       dist: {
         src: 'dist/{%= name %}.js',
         dest: 'dist/{%= name %}.min.js'
+      },
+      full: {
+        src: 'dist/{%= name %}.full.js',
+        dest: 'dist/{%= name %}.full.min.js'
       }
     },
+    clean: [
+      bower: [
+        'dist/_bower.js'
+      ],
+      dist: [
+        'dist'
+      ]
+    ],
     watch: {
-      main: {
+      scripts: {
         files: '<%= jshint.main %>',
-        tasks: 'default' 
+        tasks: 'scripts',
+        options: {
+          livereload: true
+        }
+      },
+      example: {
+        files: [
+          'example/*'
+        ],
+        options: {
+          livereload: true
+        }
       },
       ci: {
         files: [
-          '<%= jshint.main %>',
+          'Gruntfile.js',
           'test/index.html'
         ],
-        tasks: ['default', 'mocha']
+        tasks: 'default'
       }
     },
     mocha: {
       all: {
         src: 'test/index.html',
         options: {
-          run: true
+          run: true,
+          growl: true
         }
       }
     },
@@ -63,13 +104,6 @@ module.exports = function(grunt) {
           'reports': ['lib/*.js']
         }
       }
-    },
-    reloadr: {
-      main: [
-        'example/*',
-        'test/*',
-        'dist/*'
-      ]
     },
     connect: {
       server:{
@@ -83,6 +117,13 @@ module.exports = function(grunt) {
           keepalive: true
         }
       }
+    },
+    bytesize: {
+      scripts: {
+        src: [
+          'dist/*'
+        ]
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -90,11 +131,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-concat-bower');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-bytesize');
   grunt.loadNpmTasks('grunt-mocha');
-  grunt.loadNpmTasks('grunt-reloadr');
   grunt.loadNpmTasks('grunt-plato');
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'mocha']);
-  grunt.registerTask('dev', ['connect:server', 'reloadr', 'watch:main']);
-  grunt.registerTask('ci', ['connect:server', 'watch:ci']);
+  grunt.registerTask('scripts', ['jshint', 'bower', 'concat', 'uglify', 'clean:bower', 'mocha', 'bytesize']);
+  grunt.registerTask('default', ['scripts']);
+  grunt.registerTask('dev', ['connect:server', 'watch']);
   grunt.registerTask('reports', ['plato', 'connect:plato']);
 };
