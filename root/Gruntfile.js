@@ -57,14 +57,14 @@ module.exports = function(grunt) {
         dest: 'dist/{%= name %}.full.min.js'
       }
     },
-    clean: [
+    clean: {
       bower: [
         'dist/_bower.js'
       ],
       dist: [
         'dist'
       ]
-    ],
+    },
     watch: {
       scripts: {
         files: '<%= jshint.main %>',
