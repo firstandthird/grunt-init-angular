@@ -57,14 +57,14 @@ module.exports = function(grunt) {
         dest: 'dist/{%= name %}.full.min.js'
       }
     },
-    clean: [
+    clean: {
       bower: [
         'dist/_bower.js'
       ],
       dist: [
         'dist'
       ]
-    ],
+    },
     watch: {
       scripts: {
         files: '<%= jshint.main %>',
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-      ci: {
+      grunt: {
         files: [
           'Gruntfile.js',
           'test/index.html'
@@ -107,8 +107,9 @@ module.exports = function(grunt) {
     },
     connect: {
       server:{
-        port: 8000,
-        base: '.'
+        options: {
+          hostname: '*'
+        }
       },
       plato: {
         port: 8000,
