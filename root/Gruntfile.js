@@ -81,7 +81,7 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-      ci: {
+      grunt: {
         files: [
           'Gruntfile.js',
           'test/index.html'
@@ -107,8 +107,9 @@ module.exports = function(grunt) {
     },
     connect: {
       server:{
-        port: 8000,
-        base: '.'
+        options: {
+          hostname: '*'
+        }
       },
       plato: {
         port: 8000,
@@ -139,6 +140,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-plato');
   grunt.registerTask('scripts', ['jshint', 'bower', 'concat', 'uglify', 'clean:bower', 'mocha', 'bytesize']);
   grunt.registerTask('default', ['scripts']);
-  grunt.registerTask('dev', ['default', 'connect:server', 'watch']);
+  grunt.registerTask('dev', ['connect:server', 'watch']);
   grunt.registerTask('reports', ['plato', 'connect:plato']);
 };
