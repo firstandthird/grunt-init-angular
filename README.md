@@ -18,9 +18,7 @@ A simple boilerplate for creating client side libraries.
 ##Setup
 
 ```
-mkdir ~/.grunt-init
-cd ~/.grunt-init
-git clone git://github.com/jgallen23/grunt-init-bower.git bower
+git clone git://github.com/firstandthird/grunt-init-bower.git
 ```
 
 ##Usage
@@ -28,5 +26,5 @@ git clone git://github.com/jgallen23/grunt-init-bower.git bower
 inside the directory where you want to write the library (~/code/awesomelib)
 
 ```
-grunt-init bower
+grunt-init /path/to/grunt-init-bower
 ```
