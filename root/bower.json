@@ -9,7 +9,8 @@
   "dependencies": {
   },
   "devDependencies": {
-    "assert": "*"
+    "assert": "*",
+    "blanket": "*"
   },
   "ignore": [
     "test",
