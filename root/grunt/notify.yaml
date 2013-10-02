@@ -1,0 +1,3 @@
+scripts:
+  options:
+    message: '<%= name %> build complete'
