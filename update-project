@@ -2,6 +2,9 @@
 
 DIR=`dirname $0`
 
+if [ -f "bower.json" ]; then
+  head -n 7 bower.json
+fi
 grunt-init $DIR --force
 
 git checkout lib/*.js
@@ -9,3 +12,6 @@ git checkout test/*.js
 git checkout example
 git checkout HISTORY.md
 git checkout README.md
+
+npm install
+bower install
