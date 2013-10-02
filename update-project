@@ -1,12 +1,11 @@
 #!/bin/bash
 
 DIR=`dirname $0`
-echo $DIR
 
-mkdir -p grunt
-cp -r $DIR/root/grunt/* grunt/
-cp $DIR/root/Gruntfile.js .
-cp $DIR/root/bower.json .
-cp $DIR/root/package.json .
-cp $DIR/root/test/index.html test/
+grunt-init $DIR --force
 
+git checkout lib/*.js
+git checkout test/*.js
+git checkout example
+git checkout HISTORY.md
+git checkout README.md
