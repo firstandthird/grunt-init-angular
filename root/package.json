@@ -14,7 +14,6 @@
     "grunt-contrib-watch": "~0.5.1",
     "grunt-mocha": "~0.4.1",
     "grunt-notify": "~0.2.13",
-    "grunt-plato": "~0.2.0",
     "grunt-shell": "~0.4.0",
     "load-grunt-config":"~0.4.0",
     "load-grunt-tasks": "~0.1.0"
