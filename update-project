@@ -7,11 +7,13 @@ if [ -f "bower.json" ]; then
 fi
 grunt-init $DIR --force
 
-git checkout lib/*.js
-git checkout test/*.js
-git checkout example
-git checkout HISTORY.md
-git checkout README.md
+if [ -d ".git" ]; then
+  git checkout lib/*.js
+  git checkout test/*.js
+  git checkout example
+  git checkout HISTORY.md
+  git checkout README.md
+fi
 
 npm install
 bower install
