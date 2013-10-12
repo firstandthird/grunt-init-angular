@@ -15,5 +15,13 @@ if [ -d ".git" ]; then
   git checkout README.md
 fi
 
+if [ -f "HISTORY.md" ]; then
+  mv HISTORY.md CHANGELOG.md
+fi
+
+if [ -f "History.md" ]; then
+  mv History.md CHANGELOG.md
+fi
+
 npm install
 bower install
