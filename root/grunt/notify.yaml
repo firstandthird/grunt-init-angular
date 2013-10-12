@@ -1,6 +1,6 @@
 generic:
   options:
-    message: '<%= name %> build complete'
+    message: 'Build complete'
 watch:
   options:
-    message: '<%= name %> watch started'
+    message: 'Watch started'
