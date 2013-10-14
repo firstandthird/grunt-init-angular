@@ -7,7 +7,7 @@ lib:
     - 'jshint'
     - 'script-dist'
     - 'mocha'
-    - 'notify:generic'
+    - 'notify:tests'
 test:
   files:
     - '<%= jshint.test %>'
@@ -15,6 +15,7 @@ test:
   tasks:
     - 'jshint'
     - 'mocha'
+    - 'notify:tests'
 example:
   files:
     - 'example/*'
