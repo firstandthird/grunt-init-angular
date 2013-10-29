@@ -11,5 +11,5 @@ module.exports = function(grunt) {
   grunt.registerTask('script-full', ['concat:full', 'uglify:full']);
   grunt.registerTask('scripts', ['jshint', 'bower', 'script-dist', 'clean:bower', 'mocha', 'bytesize', 'notify:generic']);
   grunt.registerTask('default', ['scripts']);
-  grunt.registerTask('dev', ['bower', 'connect:server', 'notify:watch', 'watch']);
+  grunt.registerTask('dev', ['default', 'connect:server', 'notify:watch', 'watch']);
 };
