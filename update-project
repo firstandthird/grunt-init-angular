@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DIR=`dirname $0`
+
+if [ -f "bower.json" ]; then
+  head -n 7 bower.json
+fi
+grunt-init $DIR --force
+
+if [ -d ".git" ]; then
+  git checkout lib/*.js
+  git checkout test/*.js
+  git checkout example
+  git checkout HISTORY.md
+  git checkout README.md
+fi
+
+if [ -f "HISTORY.md" ]; then
+  mv HISTORY.md CHANGELOG.md
+fi
+
+if [ -f "History.md" ]; then
+  mv History.md CHANGELOG.md
+fi
+
+npm install
+bower install

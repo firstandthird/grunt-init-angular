@@ -11,7 +11,8 @@
     "angular": "~1.0.7"
   },
   "devDependencies": {
-    "assert": "*"
+    "assert": "*",
+    "blanket": "*"
   },
   "ignore": [
     "test",
@@ -19,6 +20,7 @@
     "grunt",
     "lib",
     "Gruntfile.js",
-    "package.json"
+    "package.json",
+    "grunt"
   ]
 }
